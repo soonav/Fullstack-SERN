@@ -1,4 +1,5 @@
 const db = require("../../models/index");
+const CRUDService = require("../services/CRUDsevices");
 class SiteController {
   async index(req, res) {
     try {
@@ -7,6 +8,10 @@ class SiteController {
     } catch (e) {
       console.log("e", e);
     }
+  }
+
+  async crudService(req, res) {
+    await CRUDService.createService();
   }
 }
 

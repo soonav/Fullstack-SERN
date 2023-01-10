@@ -1,4 +1,3 @@
-import express from "express";
 const newRouter = require("./news");
 const siteRouter = require("./site");
 
