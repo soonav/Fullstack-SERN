@@ -1,0 +1,94 @@
+.login-background {
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  .login-container {
+    width: 400px;
+    height: 450px;
+    padding-top: 30px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    .login-content {
+      background-color: white;
+      border-radius: 20px;
+      padding: 20px 20px;
+      .heading-login {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      .btn-hover {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 5px 0px;
+        border: none;
+        background-size: 300% 100%;
+        border-radius: 50px;
+        -o-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        background-image: linear-gradient(
+          to right,
+          #25aae1,
+          #40e495,
+          #30dd8a,
+          #2bb673
+        );
+        box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+      }
+      .btn-hover:hover {
+        background-position: 100% 0;
+        -o-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+      }
+      .container-fb-gg {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        .google {
+          cursor: pointer;
+          border-radius: 50%;
+          width: 80px;
+          height: 80px;
+          background-color: greenyellow;
+          color: green;
+          font-size: 15px;
+          font-weight: 500;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .facebook {
+          cursor: pointer;
+          display: inline-block;
+          background-color: blue;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 50px;
+          color: #fff;
+          padding: 10px;
+          border-radius: 8px;
+          font-size: 15px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
