@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import "./Login.scss";
+import { handleLoginApi } from "../../services/userServices";
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMesage] = useState("");
 
   const changeUserName = (e) => {
     setUserName(e.target.value);
@@ -12,21 +14,21 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
-    console.log("userName", userName);
-    console.log("password", password);
+  const handleLogin = async () => {
+    await handleLoginApi(userName, password);
   };
   return (
     <div className="login-background">
       <div className="login-container">
         <div className="login-content">
           <div className="col-12  heading-login">Login</div>
+          <div className="col-12">{errorMessage}</div>
           <div className="col-12 form-group mb-3 ">
             <label>Username</label>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter your usernam"
+              placeholder="Enter your username"
               value={userName}
               onChange={changeUserName}
             />
