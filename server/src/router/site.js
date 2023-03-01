@@ -8,4 +8,5 @@ router.get("/", siteController.getAllUsers);
 router.get("/edit", siteController.editCrud);
 router.put("/edit", siteController.updateCrud);
 router.post("/api/login", userController.handleLogin);
+router.get("/api/get-all-user", userController.getAllUser);
 module.exports = router;

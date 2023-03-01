@@ -1,5 +1,6 @@
 const db = require("../../models");
 const bcrypt = require("bcryptjs");
+
 let handleUserLogin = (email, password) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -53,4 +54,29 @@ let checkUserEmail = (email) => {
   });
 };
 
-module.exports = { handleUserLogin };
+let getAllUser = (userId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let user = "";
+      if (userId == "ALL") {
+        user = await db.User.findAll({
+          attributes: {
+            exclude: ["password"],
+          },
+        });
+      }
+      if (userId !== "ALL" && userId) {
+        user = await db.User.findOne({
+          where: { id: userId },
+          attributes: {
+            exclude: ["password"],
+          },
+        });
+      }
+      resolve(user);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+module.exports = { handleUserLogin, getAllUser };

@@ -1,4 +1,5 @@
 const userServices = require("../services/userServices");
+
 class UserController {
   async handleLogin(req, res) {
     let email = req.body.email;
@@ -15,6 +16,12 @@ class UserController {
       message: userData.message,
       user: userData.user ? userData.user : {},
     });
+  }
+  async getAllUser(req, res) {
+    let id = req.body.id;
+    const allUsers = await userServices.getAllUser(id);
+
+    return res.status(200).json({ errorCode: 0, errorMessage: "ok", allUsers });
   }
 }
 

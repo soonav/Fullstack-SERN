@@ -39,5 +39,8 @@ const instance = axios.create({
   //   Authorization: "Bearer " + localStorage.getItem("token"),
   // },
 });
-
+instance.interceptors.response.use((response) => {
+  const { data } = response;
+  return response.data;
+});
 export default instance;

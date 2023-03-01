@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import "./Login.scss";
 import { handleLoginApi } from "../../services/userServices";
+import * as actions from "../../store/action";
+
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -15,14 +17,28 @@ function Login() {
   };
 
   const handleLogin = async () => {
-    await handleLoginApi(userName, password);
+    // setErrorMesage("");
+    try {
+      const dataRespone = await handleLoginApi(userName, password);
+      console.log("dataRespone", dataRespone);
+      dataRespone &&
+        dataRespone.errorCode !== 0 &&
+        setErrorMesage(dataRespone.message);
+      dataRespone &&
+        dataRespone.errorCode == 0 &&
+        setErrorMesage("login success");
+    } catch (e) {
+      e.response && e.response.data && setErrorMesage(e.response.data.message);
+    }
   };
   return (
     <div className="login-background">
       <div className="login-container">
         <div className="login-content">
           <div className="col-12  heading-login">Login</div>
-          <div className="col-12">{errorMessage}</div>
+          <div className="col-12" style={{ color: "red" }}>
+            {errorMessage}
+          </div>
           <div className="col-12 form-group mb-3 ">
             <label>Username</label>
             <input
@@ -67,5 +83,13 @@ function Login() {
     </div>
   );
 }
+
+const mapDispatch = (dispatch) => {
+  return {
+    // navigate: (patch) => dispatch(push(patch)),
+    userLoginSuccess: (userInfo) =>
+      dispatch(actions.userLoginSuccess(userInfo)),
+  };
+};
 
 export default Login;
